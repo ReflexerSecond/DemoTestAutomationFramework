@@ -10,6 +10,7 @@ import io.restassured.specification.FilterableResponseSpecification;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import static io.qameta.allure.Allure.getLifecycle;
 
@@ -27,18 +28,20 @@ public class AllureLoggingFilter implements Filter {
                            FilterContext filterContext) {
 
         String url = requestSpec.getURI();
-
         Prettifier prettifier = new Prettifier();
 
+        String requestParams = requestSpec.getFormParams().keySet()
+                .stream()
+                .map(x -> x + ": " + requestSpec.getFormParams().get(x))
+                .collect(Collectors.joining("\n"));
 
-        //TODO:
-        // 1. ADD PARAMS
-        // 2. MOVE HEADERS TO TOP FOR REQUEST
-        String requestMsg = String.format("Request:\n%s %s\n%s\nHeaders:%s",
+        String requestMsg = String.format("Request:\n%s %s\nHeaders:%s\nParams:\n{%s}\n%s",
                 requestSpec.getMethod(),
                 url,
-                (requestSpec.getBody() != null) ? prettifier.getPrettifiedBodyIfPossible(requestSpec) : "",
-                toMapConverter(requestSpec.getHeaders()));
+                toMapConverter(requestSpec.getHeaders()),
+                requestParams,
+                (requestSpec.getBody() != null) ? prettifier.getPrettifiedBodyIfPossible(requestSpec) : ""
+        );
 
         Response response = filterContext.next(requestSpec, responseSpec);
         String responseMsg = String.format("Response:\nStatus - %s %s\n%s\nHeaders:%s",

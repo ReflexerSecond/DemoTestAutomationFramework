@@ -6,7 +6,7 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>3.0.2</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <relativePath/>
     </parent>
     <groupId>ru.nikulin</groupId>
     <artifactId>demoTestFramework</artifactId>
@@ -22,6 +22,8 @@
         <maven.surefire.plugin.version>2.20</maven.surefire.plugin.version>
         <selenium.java.version>4.8.0</selenium.java.version>
         <restassured.version>5.3.0</restassured.version>
+        <log4j.version>2.20.0</log4j.version>
+        <allure-results.dir>${project.build.directory}/allure-results</allure-results.dir>
     </properties>
     <dependencies>
         <dependency>
@@ -29,7 +31,11 @@
             <artifactId>lombok</artifactId>
             <optional>true</optional>
         </dependency>
-
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>${log4j.version}</version>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
@@ -97,8 +103,7 @@
                 <configuration>
                     <testFailureIgnore>true</testFailureIgnore>
                     <systemPropertyVariables>
-                        <allure.results.directory>${project.build.directory}/target/allure-results
-                        </allure.results.directory>
+                        <allure.results.directory>${allure-results.dir}</allure.results.directory>
                     </systemPropertyVariables>
                 </configuration>
             </plugin>

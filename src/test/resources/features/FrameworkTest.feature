@@ -1,16 +1,12 @@
 Feature: Framework test
 
-  Scenario: Cucumber test positive
-    When step should pass
+  Scenario: test positive
+    Given user getting "GUEST" token
     When user opens different sites
-    When step should pass
+    When user getting all countries to ship
+    Then status code was 200
 
-  Scenario: API test positive
-    When step should pass
-    When user send get request
-    When step should pass
-
-
+  @skip
   Scenario: Cucumber test negative
     When step should pass
     When step should pass

@@ -10,9 +10,7 @@ public class DemoTestFrameworkApplication {
     @Value("${webdriver.chrome.driver}")
     private static String driverPath;
 
-
     public static void main(String[] args) {
         SpringApplication.run(DemoTestFrameworkApplication.class, args);
     }
-
 }
