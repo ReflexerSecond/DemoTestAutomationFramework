@@ -6,7 +6,7 @@ Used stack:
 
 - [Spring Boot](https://spring.io/projects/spring-boot)
 - [Cucumber](https://cucumber.io/)
-- [Selenium](https://www.selenium.dev/)
+- [Selenium](https://www.selenium.dev/) / [Selenide](https://selenide.org/)
 - [Allure](https://qameta.io/allure-report/)
 - [Rest Assured](https://rest-assured.io/)
 

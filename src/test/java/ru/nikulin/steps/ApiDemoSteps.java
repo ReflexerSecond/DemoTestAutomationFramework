@@ -22,7 +22,7 @@ public class ApiDemoSteps {
     }
 
     @When("user getting all countries to ship")
-    public void getAllShipToContries() {
+    public void getAllShipToCountries() {
         apiClient.sendRequest(HttpMethod.GET, "/site/v1/allShipToCountries");
     }
 
