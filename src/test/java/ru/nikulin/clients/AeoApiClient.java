@@ -1,4 +1,4 @@
-package ru.nikulin.utils;
+package ru.nikulin.clients;
 
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import ru.nikulin.constants.Constants;
 import ru.nikulin.constants.UserType;
+import ru.nikulin.utils.AllureLoggingFilter;
+import ru.nikulin.utils.ScenarioContext;
 
 import javax.annotation.Nullable;
 import java.util.HashMap;
@@ -15,16 +17,13 @@ import java.util.Map;
 
 @Component
 public class AeoApiClient {
-
-    //TODO refactor it
     @Autowired
     ScenarioContext context;
     private String token;
     private UserType currentUserType;
-
     private RequestSpecification requestSpecification;
 
-    AeoApiClient() {
+    public AeoApiClient() {
         RestAssured.filters(new AllureLoggingFilter());
     }
 
@@ -74,9 +73,9 @@ public class AeoApiClient {
 
     public void reset() {
         requestSpecification = RestAssured.given()
-                .baseUri(Constants.baseUrl)
-                .basePath(Constants.apiPath)
-                .header("authorization", Constants.authHeader)
+                .baseUri(Constants.AE_BASE_URL)
+                .basePath(Constants.AE_API_PATH)
+                .header("authorization", Constants.AE_AUTH_HEADER)
                 .header("aeLang", "en_US")
                 .header("aeSite", "AEO_US")
                 .log()
