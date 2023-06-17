@@ -1,4 +1,4 @@
-package ru.nikulin.constants;
+package ru.nikulin.api.constants;
 
 import lombok.Getter;
 

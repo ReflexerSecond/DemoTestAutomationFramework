@@ -1,23 +1,30 @@
-package ru.nikulin;
+package ru.nikulin.webui.configurations;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
-import io.qameta.allure.selenide.AllureSelenide;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 
 public class TestFixtures {
-    @Value("${webdriver.chrome.driver}")
-    private String driverPath;
+    @Autowired
+    WebDriverPathConfigurator webDriverPathConfigurator;
+
+    @Value("${full.page.screenshots}")
+    private Boolean fullPageScreenshot;
 
     @Before(value = "@webui")
     public void setup() {
-        System.setProperty("webdriver.chrome.driver", driverPath);
+        webDriverPathConfigurator.setup();
+
         Configuration.downloadsFolder = "target/downloads";
         Configuration.reportsFolder = "";
-        SelenideLogger.addListener("AllureSelenide", new AllureSelenide()
+
+
+        SelenideLogger.addListener("AllureSelenide", new AllureSelenideWithFullPageScreenshots()
+                .fullPageScreenshots(fullPageScreenshot)
                 .screenshots(true)
                 .savePageSource(true)
                 .includeSelenideSteps(false)

@@ -1,4 +1,4 @@
-package ru.nikulin.steps;
+package ru.nikulin.api.steps;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -6,8 +6,8 @@ import io.cucumber.java.en.When;
 import io.restassured.response.Response;
 import org.openqa.selenium.remote.http.HttpMethod;
 import org.springframework.beans.factory.annotation.Autowired;
-import ru.nikulin.clients.AeoApiClient;
-import ru.nikulin.constants.UserType;
+import ru.nikulin.api.clients.AeoApiClient;
+import ru.nikulin.api.constants.UserType;
 import ru.nikulin.utils.ScenarioContext;
 
 public class ApiDemoSteps {

@@ -1,14 +1,14 @@
-package ru.nikulin.Pages;
+package ru.nikulin.webui.pages;
 
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import lombok.Getter;
 import org.springframework.stereotype.Component;
-import ru.nikulin.constants.Constants;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
+import static ru.nikulin.webui.constants.WebUIConstants.SPRING_MAIN_PAGE_URL;
 
 @Component
 public class SpringMainPage {
@@ -23,7 +23,7 @@ public class SpringMainPage {
     private final ElementsCollection featureArticle = $$(".features > .feature");
 
     public static void open() {
-        Selenide.open(Constants.SPRING_MAIN_PAGE_URL);
+        Selenide.open(SPRING_MAIN_PAGE_URL);
         new SpringMainPage();
     }
 

@@ -1,4 +1,4 @@
-package ru.nikulin.utils;
+package ru.nikulin.api.configurations;
 
 import io.restassured.filter.Filter;
 import io.restassured.filter.FilterContext;

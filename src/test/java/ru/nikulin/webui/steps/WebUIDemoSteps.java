@@ -1,12 +1,11 @@
-package ru.nikulin.steps;
+package ru.nikulin.webui.steps;
 
 import com.codeborne.selenide.Condition;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.springframework.beans.factory.annotation.Autowired;
-import ru.nikulin.Pages.SpringMainPage;
-
+import ru.nikulin.webui.pages.SpringMainPage;
 
 public class WebUIDemoSteps {
 
